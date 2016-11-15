@@ -1,3 +1,8 @@
+;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 8 U2: imprimir nombre 100 veces
+
 .model small
 .stack
 .data

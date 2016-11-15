@@ -1,59 +1,86 @@
-DATA SEGMENT
-     NUM1 DB ?
-     NUM2 DB ?
-     RESULT DB ?
-     MSG1 DB 10,13,"ENTER FIRST NUMBER TO MULTIPLY : $"
-     MSG2 DB 10,13,"ENTER SECOND NUMBER TO MULTIPLY : $"  
-     MSG3 DB 10,13,"RESULT OF MULTIPLICATION IS : $"
-ENDS
+;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 16 U2: Division de dos numeros
 
-CODE SEGMENT 
-    ASSUME DS:DATA CS:CODE
-START:
-      MOV AX,DATA
-      MOV DS,AX
-     
-      LEA DX,MSG1
-      MOV AH,9
-      INT 21H
-     
-      MOV AH,1
-      INT 21H
-      SUB AL,30H
-      MOV NUM1,AL
-     
-      LEA DX,MSG2
-      MOV AH,9
-      INT 21H
-     
-      MOV AH,1
-      INT 21H
-      SUB AL,30H
-      MOV NUM2,AL
-     
-      MUL NUM1
-              
-      MOV RESULT,AL
-      AAM
-     
-      ADD AH,30H
-      ADD AL,30H 
-     
-      MOV BX,AX
-     
-      LEA DX,MSG3
-      MOV AH,9
-      INT 21H
-     
-      MOV AH,2
-      MOV DL,BH
-      INT 21H
-     
-      MOV AH,2
-      MOV DL,BL
-      INT 21H
-     
-      MOV AH,4CH
-      INT 21H     
-ENDS
-END START
+.model small 
+.stack 
+.data 
+
+
+num1 db 0 
+num2 db 0 
+r db 0 
+
+m1 db 13,10,10,10,"1er numero: $" 
+m2 db 13,10,"2do numero: $" 
+m3 db 13,10,10,10,"el resultado es: $" 
+
+
+.code 
+programa: 
+
+mov ax,@data 
+mov ds,ax 
+
+mov dx, offset m1 
+mov ah, 09h 
+int 21h 
+
+mov ah,01h 
+int 21h 
+
+SUB AL,30H 
+mov num1,AL 
+
+mov dx, offset m2 
+mov ah, 09h 
+int 21h 
+
+mov ah,01h 
+int 21h 
+
+SUB AL,30H 
+mov num2,AL 
+
+;PARTE DE LA OPERACION 
+MOV AX,0000H 
+MOV CX,0000H 
+MOV al, num1 ;dividendo el acumulador 
+MOV cl, num2 
+DIV cl 
+
+PUSH AX 
+
+mov dx, offset m3 
+mov ah,09h 
+int 21h 
+
+POP AX 
+
+CMP AH,00h 
+JE salida 
+
+PUSH AX ;Transfiero el registro AX a la pila 
+
+ADD AH,30H 
+MOV DL,AH 
+MOV AH,02H 
+INT 21H 
+
+MOV DL,' ' 
+INT 21H 
+
+POP AX 
+
+salida: 
+ADD AL,30H 
+MOV DL,AL 
+MOV AH,02H 
+INT 21H 
+
+
+mov ax, 4c00h 
+int 21h 
+
+end programa 

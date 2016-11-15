@@ -1,3 +1,7 @@
+;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 11 U2: Comparacion de 3 cadenas
 .model small
 .stack 64
 .data

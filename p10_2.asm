@@ -1,3 +1,7 @@
+;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 10 U2: cancion de batman
 .model small
 .stack
 .data

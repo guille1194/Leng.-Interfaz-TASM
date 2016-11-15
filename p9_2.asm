@@ -1,22 +1,20 @@
+;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 9 U2: Ingresar texto hasta teclear letra s
+
 .model small
-.stack
+.stack 64
 .data
 .code
-	PAGE 60,132
-	TITLE EJLOOP (EXE) ilustración de LOOP
-	; ----------------------------------------…
-	ORG 100H
-	BEGIN PROC NEAR
-		MOV AX,01 ; iniciación de AX
-		MOV BX,01 ; BX y
-		MOV DX,01 ; DX a 01
-		MOV CX,10 ; iniciar
-		A20: ; número de iteraciones
-		LOOP A20 ; decrementar CX
-		; iterar si es diferente de 0
-		MOV AX, 4C00H ; salida a DOS
-		INT 21H
-	BEGIN ENDP ; fin de procedimiento
+.startup
+inicio:
+  mov ah,01h
+  int 21h
+  cmp al,73h ;es el código hexadecimal del s, compara si el la tecla presionada fue un s.
+  jne inicio ;si no es un s salta a la etiqueta inicio.
+  mov ah,02h
+  mov dl,al
+  int 21h
 .exit
 end
-

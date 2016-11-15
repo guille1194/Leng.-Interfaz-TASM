@@ -1,3 +1,7 @@
+ ;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 4 U2: Ciclos a a la z
  .MODEL SMALL
  .STACK 100H
 
@@ -6,26 +10,26 @@
 
  .CODE
    MAIN PROC
-     MOV AX, @DATA                ; initialize DS 
+     MOV AX, @DATA                ; inicializar DS 
      MOV DS, AX
 
-     LEA DX, PROMPT               ; load and print PROMPT 
+     LEA DX, PROMPT               ; cargar e imprimir PROMPT 
      MOV AH, 9
      INT 21H
 
-     MOV CX, 26                   ; initialize CX
+     MOV CX, 26                   ; inicializar CX
 	 
-     MOV AH, 2                    ; set output function  
-     MOV DL, 97                  ; set DL with 0
+     MOV AH, 2                    ; establecer la funcion de salida 
+     MOV DL, 97                  ; establecer DL con 0
 
      @LOOP:                       ; loop label
-       INT 21H                    ; print character
+       INT 21H                    ; print caracter
 
-       DEC DL                     ; increment DL to next ASCII character
-       DEC CX                     ; decrement CX
-     JNZ @LOOP                    ; jump to label @LOOP if CX is 0
+       DEC DL                     ; incrementar DL al siguiente caracter ASCII
+       DEC CX                     ; decremento CX
+     JNZ @LOOP                    ; saltar a label @LOOP si CX es 0
 
-     MOV AH, 4CH                  ; return control to DOS
+     MOV AH, 4CH                  ; retornar control a DOS
      INT 21H
    MAIN ENDP
  END MAIN

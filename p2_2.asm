@@ -1,3 +1,7 @@
+;Guillermo Navarro Mancillas
+;13211447
+;Lenguajes de interfaz 2:00pm - 3:00pm
+;Programa 2 U2: Nombre, carrera y semestre en cadena
 .model small
 .stack
 .data

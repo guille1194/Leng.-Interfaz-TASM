@@ -1,1 +1,9 @@
-p13_2.obj : unable to open file
+
+ Start  Stop   Length Name               Class
+
+ 00000H 000B6H 000B7H _TEXT              CODE
+ 000B8H 000B8H 00000H _DATA              DATA
+ 000C0H 004BFH 00400H STACK              STACK
+
+Program entry point at 0000:0006
+
